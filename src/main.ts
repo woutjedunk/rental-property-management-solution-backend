@@ -2,6 +2,10 @@
 import express from "express"
 import "jsr:@std/dotenv/load";
 
+
+const APP_PORT = Deno.env
+
+
 const app = express()
 
 app.get("/", (req, res) => {
@@ -9,4 +13,4 @@ app.get("/", (req, res) => {
   res.send(Deno.env.get("GREETINGS") || "No .env set");
 });
 
-app.listen(8000);
+app.listen(APP_PORT);

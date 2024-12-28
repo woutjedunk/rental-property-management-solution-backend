@@ -11,11 +11,12 @@ import {
 } from "@std/assert"
 
 
-import { Address, AddressJSON } from "@model/address.ts";
+import { Address } from "@model/address.ts";
+import { randomUUID } from "node:crypto";
 
 describe("A valid address", () => {
     it("should be created", () => {
-        const address = new Address("country", "city", "postalCode", "street", "streetNumber");
+        const address = new Address(randomUUID(), "country", "city", "postalCode", "street", "streetNumber");
         assert(address instanceof Address);
         assertEquals(address.country, "country");
         assertEquals(address.city, "city");
@@ -27,6 +28,7 @@ describe("A valid address", () => {
     
     it("should be created from JSON with lowercase values", () => {
         const address = Address.from({
+            id: randomUUID(),
             country: "COUNTRY",
             city: "CITY",
             postalCode: "POSTALCODE",
@@ -43,7 +45,7 @@ describe("A valid address", () => {
 
     it("should throw an error if JSON is empty", () => {
         assertThrows(() => {
-            Address.from({ } as unknown as AddressJSON);
+            Address.from({ } as any);
         });
     });
 
@@ -51,6 +53,7 @@ describe("A valid address", () => {
     it("should throw an error if country is too long", () => {
         assertThrows(() => {
             Address.from({
+                id: randomUUID(),
                 country: "a".repeat(256),
                 city: "city",
                 postalCode: "postalCode",
@@ -63,6 +66,7 @@ describe("A valid address", () => {
     it("should throw an error if city is too long", () => {
         assertThrows(() => {
             Address.from({
+                id: randomUUID(),
                 country: "country",
                 city: "a".repeat(256),
                 postalCode: "postalCode",
@@ -75,6 +79,7 @@ describe("A valid address", () => {
     it("should throw an error if postalCode is too long", () => {
         assertThrows(() => {
             Address.from({
+                id: randomUUID(),
                 country: "country",
                 city: "city",
                 postalCode: "a".repeat(256),
@@ -87,12 +92,13 @@ describe("A valid address", () => {
     it("should throw an error if country name is a number", () => {
         assertThrows(() => {
             Address.from({
+                id: randomUUID(),
                 country: 123,
                 city: "city",
                 postalCode: "postalCode",
                 street: "street",
                 streetNumber: "streetNumber"
-            } as unknown as AddressJSON);
+            } as any);
         });
     })
 });

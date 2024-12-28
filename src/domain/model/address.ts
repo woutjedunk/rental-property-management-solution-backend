@@ -1,8 +1,10 @@
+import { randomUUID, UUID } from "node:crypto";
 import { z } from 'zod';
 
 
 
 const AddressSchema = z.object({
+    id: z.string().uuid(),
     country: z.string().max(32),
     city: z.string().max(32),
     postalCode: z.string().max(16),
@@ -10,22 +12,16 @@ const AddressSchema = z.object({
     streetNumber: z.string().max(16),
 });
 
-export type AddressJSON = {
-    country: string;
-    city: string;
-    postalCode: string;
-    street: string;
-    streetNumber: string;
-}
-
 export class Address {
+    readonly id: UUID;
     readonly country: string;
     readonly city: string;
     readonly postalCode: string;
     readonly street: string;
     readonly streetNumber: string;
 
-    constructor(country: string, city: string, postalCode: string, street: string, streetNumber: string) {
+    constructor(id: UUID, country: string, city: string, postalCode: string, street: string, streetNumber: string) {
+        this.id = id;
         this.country = country;
         this.city = city;
         this.postalCode = postalCode;
@@ -33,16 +29,14 @@ export class Address {
         this.streetNumber = streetNumber;
     }
 
-    static from(address: AddressJSON) {
-
-        AddressSchema.parse(address);
-    
+    static from = (data: z.infer<typeof AddressSchema>): Address => {
+        AddressSchema.parse(data);
         return new Address(
-            address.country.toLowerCase(),
-            address.city.toLowerCase(),
-            address.postalCode.toLowerCase(),
-            address.street.toLowerCase(),
-            address.streetNumber.toLowerCase()
-        );
+            randomUUID(), 
+            data.country.toLowerCase(),
+            data.city.toLowerCase(), 
+            data.postalCode.toLowerCase(), 
+            data.street.toLocaleLowerCase(), 
+            data.streetNumber.toLocaleLowerCase());
     }
 }

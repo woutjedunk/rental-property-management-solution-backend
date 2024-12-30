@@ -20,7 +20,7 @@ export class Address {
     readonly street: string;
     readonly streetNumber: string;
 
-    constructor(id: UUID, country: string, city: string, postalCode: string, street: string, streetNumber: string) {
+    private constructor(id: UUID, country: string, city: string, postalCode: string, street: string, streetNumber: string) {
         this.id = id;
         this.country = country;
         this.city = city;
@@ -29,14 +29,22 @@ export class Address {
         this.streetNumber = streetNumber;
     }
 
-    static from = (data: z.infer<typeof AddressSchema>): Address => {
-        AddressSchema.parse(data);
+    static from = (id: UUID, country: string, city: string, postalCode: string, street: string, streetNumber: string): Address => {
+        AddressSchema.parse({
+            id: id,
+            country: country,
+            city: city,
+            postalCode: postalCode,
+            street: street,
+            streetNumber: streetNumber,
+        });
         return new Address(
-            randomUUID(), 
-            data.country.toLowerCase(),
-            data.city.toLowerCase(), 
-            data.postalCode.toLowerCase(), 
-            data.street.toLocaleLowerCase(), 
-            data.streetNumber.toLocaleLowerCase());
+            id, 
+            country,
+            city, 
+            postalCode, 
+            street, 
+            streetNumber
+        )
     }
 }

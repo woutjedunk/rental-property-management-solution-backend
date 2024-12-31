@@ -1,6 +1,16 @@
 {
   "tasks": {
-    "dev": "deno run -A --watch src/main.ts"
+    "dev": "deno task db:start && deno run -A --watch src/main.ts --env-file",
+    "migrate": "deno task db:start && deno task drizzle-kit migrate",
+    "generate": "deno task db:start && deno task drizzle-kit generate",
+    "studio": "deno task db:start && deno task drizzle-kit studio",
+    "check": "deno lint && deno task drizzle-kit check",
+    "update": "deno run --allow-read=./ --allow-net --allow-write=./ https://deno.land/x/deno_outdated@0.2.5/cli.ts && deno install",
+    "db": "docker compose -f ./.dev/database/docker-compose.yml",
+    "db:build": "deno task db build",
+    "db:start": "deno task db up -d",
+    "db:stop": "deno task db down",
+    "drizzle-kit": "deno run --env -A --node-modules-dir npm:drizzle-kit"
   },
   "imports": {
     "@std/assert": "jsr:@std/assert@1",
@@ -12,7 +22,8 @@
     "express": "npm:express@^4.21.2",
     "pg": "npm:pg@^8.13.1",
     "zod": "npm:zod@^3.24.1",
-    "@model/": "./src/domain/model/"
+    "@model/": "./src/domain/model/",
+    "@config/": "./src/config/"
   },
   "nodeModulesDir": "auto"
 }

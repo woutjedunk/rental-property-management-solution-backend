@@ -1,0 +1,12 @@
+name: dev-database-rental-property-management-solution
+services:
+  db:
+    image: postgres:16
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - PGUSER=postgres
+
+    ports:
+      - 5433:5432

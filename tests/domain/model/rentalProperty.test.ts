@@ -29,11 +29,11 @@ describe("A valid rental property", () => {
             "storage"
         );
         assert(rentalProperty instanceof RentalProperty);
-        assertEquals(rentalProperty.address.country, "country");
-        assertEquals(rentalProperty.address.city, "city");
-        assertEquals(rentalProperty.address.postalCode, "postalCode");
-        assertEquals(rentalProperty.address.street, "street");
-        assertEquals(rentalProperty.address.streetNumber, "streetNumber");
+        assertEquals(rentalProperty.address!.country, "country");
+        assertEquals(rentalProperty.address!.city, "city");
+        assertEquals(rentalProperty.address!.postalCode, "postalCode");
+        assertEquals(rentalProperty.address!.street, "street");
+        assertEquals(rentalProperty.address!.streetNumber, "streetNumber");
         assertEquals(rentalProperty.rentalOwner, "rentalOwner");
         assertEquals(rentalProperty.madeBy, "madeBy");
         assertEquals(rentalProperty.editedBy, "editedBy");

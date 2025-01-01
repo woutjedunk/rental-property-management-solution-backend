@@ -6,7 +6,7 @@ import { z } from  "npm:zod";
 
 export class RentalProperty {
     readonly id: UUID;
-    readonly address: Address;
+    readonly address?: Address;
     readonly rentalOwner: string; // later user aan vasthangen
 
     readonly madeAt: Date;
@@ -20,7 +20,7 @@ export class RentalProperty {
 
     private constructor(
         id: UUID,
-        address: Address,
+        address: Address | undefined,
         rentalOwner: string,
         madeAt: Date,
         madeBy: string,
@@ -46,7 +46,7 @@ export class RentalProperty {
 
     static from = (
         id: UUID,
-        address: Address,
+        address: Address | undefined,
         rentalOwner: string,
         madeAt: Date,
         madeBy: string,

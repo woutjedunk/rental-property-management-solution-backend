@@ -1,7 +1,15 @@
 import { drizzle } from 'drizzle-orm/node-postgres';
+import { rentalPropertiesTable, addressesTable } from "@config/drizzle/schema.ts";
 import "jsr:@std/dotenv/load";
 
-const db = drizzle(Deno.env.get('DATABASE_URL')!);
+const db = drizzle({
+    connection: Deno.env.get('DATABASE_URL')!,
+    casing: 'snake_case',
+    schema: { 
+        rentalProperties: rentalPropertiesTable,
+        addresses: addressesTable
+     }
+});
  
 async function logCurrentTime() {
     try {

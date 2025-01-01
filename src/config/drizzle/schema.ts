@@ -1,26 +1,26 @@
-import { pgTable, pgSchema, varchar, uuid } from "drizzle-orm/pg-core";
+import { pgTable, varchar, uuid,  } from "drizzle-orm/pg-core";
 
-export const schema = pgSchema("public");
 
-export const rentalPropertiesTable = schema.table("rental_properties", {
+
+export const rentalPropertiesTable = pgTable("rental_properties", {
     id: uuid().primaryKey(),
-    addressId: uuid().references(() => addressesTable.id),
-    rentalOwner: varchar(),
-    madeAt: varchar(),
-    madeBy: varchar(),
-    editedAt: varchar(),
-    editedBy: varchar(),
-    rentalName: varchar(),
-    singleBeds: varchar(),
-    doubleBeds: varchar(),
-    storage: varchar(),
+    addressId: uuid().references(() => addressesTable.id).notNull(),
+    rentalOwner: varchar().notNull(),
+    madeAt: varchar().notNull(),
+    madeBy: varchar().notNull(),
+    editedAt: varchar().notNull(),
+    editedBy: varchar().notNull(),
+    rentalName: varchar().notNull(),
+    singleBeds: varchar().notNull(),
+    doubleBeds: varchar().notNull(),
+    storage: varchar().notNull(),
 });
 
-export const addressesTable = schema.table("addresses", {
+export const addressesTable = pgTable("addresses", {
     id: uuid().primaryKey(),
-    country: varchar(),
-    city: varchar(),
-    postalCode: varchar(),
-    street: varchar(),
-    streetNumber: varchar(),
+    country: varchar().notNull(),
+    city: varchar().notNull(),
+    postalCode: varchar().notNull(),
+    street: varchar().notNull(),
+    streetNumber: varchar().notNull(),
 });

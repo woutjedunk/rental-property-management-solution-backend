@@ -27,7 +27,7 @@ export class AddressAdapter implements DbAdapter<AddressEntity,Address> {
             row.streetNumber || "");
     }
 
-    maptToDb(domain: Address): AddressEntity {
+    mapToDb(domain: Address): AddressEntity {
         return {
             id: domain.id,
             country: domain.country,

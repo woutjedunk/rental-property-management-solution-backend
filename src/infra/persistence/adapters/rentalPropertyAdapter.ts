@@ -1,7 +1,7 @@
 import { RentalProperty } from "@model/rentalProperty.ts"
-import { RentalPropertyEntity } from "../dbEntities/rentalPropertyDrizzle.ts";
+import { RentalPropertyEntity } from "../dbEntities/rentalPropertyEntity.ts";
 import { UUID } from "node:crypto";
-import { AddressAdapter } from "./AddressAdapter.ts";
+import { AddressAdapter } from "./addressAdapter.ts";
 
 export class RentalPropertyAdapter {
 
@@ -32,5 +32,19 @@ export class RentalPropertyAdapter {
         );
     }
 
-    mapToDb()
+    mapToDb(domain: RentalProperty): RentalPropertyEntity {
+        return {
+            id: domain.id,
+            address: domain.address ? AddressAdapter.getInstance().mapToDb(domain.address) : undefined,
+            rentalOwner: domain.rentalOwner,
+            madeAt: domain.madeAt.toISOString(),
+            madeBy: domain.madeBy,
+            editedAt: domain.editedAt.toISOString(),
+            editedBy: domain.editedBy,
+            rentalName: domain.rentalName,
+            singleBeds: domain.singleBeds.toString(),
+            doubleBeds: domain.doubleBeds.toString(),
+            storage: domain.storage
+        }
+    }
 }

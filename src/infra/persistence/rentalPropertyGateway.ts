@@ -1,4 +1,4 @@
-import { IRentalPropertyPersistence } from "@application/IRentalPropertyPersistence.ts";
+import { IRentalPropertyPersistence } from "../../application/rentalProperty/IRentalPropertyPersistence.ts";
 import { RentalProperty } from "@model/rentalProperty.ts";
 import { DbAdapter } from "./DbAdapter.ts";
 import { RentalPropertyEntity } from "./dbEntities/rentalPropertyEntity.ts";

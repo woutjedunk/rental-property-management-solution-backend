@@ -37,4 +37,12 @@ export class AddressAdapter implements DbAdapter<AddressEntity,Address> {
             streetNumber: domain.streetNumber
         }
     }
+
+    mapToDomainList(dbEntities: { id: string; country: string; city: string; postalCode: string; street: string; streetNumber: string; }[]): Address[] {
+        return dbEntities.map((dbEntity) => this.mapToDomain(dbEntity));
+    }
+
+    maptToDbList(domainEntities: Address[]): { id: string; country: string; city: string; postalCode: string; street: string; streetNumber: string; }[] {
+        return domainEntities.map((domainEntity) => this.mapToDb(domainEntity));
+    }
 }

@@ -30,7 +30,7 @@ export class RentalPropertyGateway implements IRentalPropertyPersistence {
 
     async getAll(): Promise<RentalProperty[]> {
         const rentalProperties = await this.RentalPropertyRepo.getAll()
-        return rentalProperties.map((rentalProperty) => this.RentalPropertyAdapter.mapToDomain(rentalProperty));
+        return this.RentalPropertyAdapter.mapToDomainList(rentalProperties);
     }
 
 }

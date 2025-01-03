@@ -2,8 +2,9 @@ import { RentalProperty } from "@model/rentalProperty.ts"
 import { RentalPropertyEntity } from "../dbEntities/rentalPropertyEntity.ts";
 import { UUID } from "node:crypto";
 import { AddressAdapter } from "./addressAdapter.ts";
+import { DbAdapter } from "@persistence/DbAdapter.ts";
 
-export class RentalPropertyAdapter {
+export class RentalPropertyAdapter implements DbAdapter<RentalPropertyEntity, RentalProperty> {
 
     private static instance: RentalPropertyAdapter;
 
@@ -46,5 +47,13 @@ export class RentalPropertyAdapter {
             doubleBeds: domain.doubleBeds.toString(),
             storage: domain.storage
         }
+    }
+
+    maptToDbList(rows: RentalProperty[]): RentalPropertyEntity[] {
+        return rows.map((row) => this.mapToDb(row));
+    }
+
+    mapToDomainList(dbEntities: RentalPropertyEntity[]): RentalProperty[] {
+        return dbEntities.map((dbEntity) => this.mapToDomain(dbEntity));
     }
 }

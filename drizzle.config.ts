@@ -7,4 +7,5 @@ export default defineConfig({
     dbCredentials: {
         url: Deno.env.get("DATABASE_URL")!,
       },
+    casing: "snake_case",
 });

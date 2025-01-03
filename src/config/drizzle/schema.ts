@@ -1,10 +1,11 @@
 import { pgTable, varchar, uuid,  } from "drizzle-orm/pg-core";
+import { relations } from "drizzle-orm/relations";
 
 
 
-export const rentalPropertiesTable = pgTable("rental_properties", {
+export const rentalProperties = pgTable("rental_properties", {
     id: uuid().primaryKey(),
-    addressId: uuid().references(() => addressesTable.id).notNull(),
+    addressId: uuid().references(() => addresses.id).notNull(),
     rentalOwner: varchar().notNull(),
     madeAt: varchar().notNull(),
     madeBy: varchar().notNull(),
@@ -15,8 +16,14 @@ export const rentalPropertiesTable = pgTable("rental_properties", {
     doubleBeds: varchar().notNull(),
     storage: varchar().notNull(),
 });
+export const rentalPropertiesRelations = relations(rentalProperties, ({ one }) => ({
+    address: one(addresses, {
+        fields: [rentalProperties.addressId],
+        references: [addresses.id],
+    })
+}))
 
-export const addressesTable = pgTable("addresses", {
+export const addresses = pgTable("addresses", {
     id: uuid().primaryKey(),
     country: varchar().notNull(),
     city: varchar().notNull(),

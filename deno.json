@@ -23,7 +23,9 @@
     "pg": "npm:pg@^8.13.1",
     "zod": "npm:zod@^3.24.1",
     "@model/": "./src/domain/model/",
-    "@config/": "./src/config/"
+    "@config/": "./src/config/",
+    "@application/": "./src/application/",
+    "@persistence/": "./src/infra/persistence/"
   },
   "nodeModulesDir": "auto"
 }

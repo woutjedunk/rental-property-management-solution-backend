@@ -1,6 +1,6 @@
 import { InferSelectModel } from "drizzle-orm/table";
-import { addressesTable } from "@config/drizzle/schema.ts";
+import { addresses } from "@config/drizzle/schema.ts";
 
-type AddressDrizzle = InferSelectModel<typeof addressesTable>;
+type AddressDrizzle = InferSelectModel<typeof addresses>;
 
 export type AddressEntity = AddressDrizzle

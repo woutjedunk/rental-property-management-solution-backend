@@ -1,10 +1,8 @@
 import { RentalProperty } from "@model/rentalProperty.ts"
+import { UUID } from "node:crypto";
 
-interface IRentalPropertyPersistence {
-    save(rentalProperty: RentalProperty): void;
-    update(rentalProperty: RentalProperty): void;
-    delete(rentalProperty: RentalProperty): void;
-    getById(id: string): RentalProperty;
-    getByOwner(owner: string): RentalProperty[];
-    getAll(): RentalProperty[];
+export interface IRentalPropertyPersistence {
+    save(rentalProperty: RentalProperty): Promise<void>;
+    getByRentalPropertyId(id: UUID): Promise<RentalProperty|undefined>;
+    getAll(): Promise<RentalProperty[]>;
 }

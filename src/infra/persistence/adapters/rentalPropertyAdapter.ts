@@ -1,7 +1,7 @@
 import { RentalProperty } from "@model/rentalProperty.ts"
-import { RentalPropertyEntity } from "../dbEntities/rentalPropertyEntity.ts";
+import { RentalPropertyEntity } from "@persistence/dbEntities/rentalPropertyEntity.ts";
 import { UUID } from "node:crypto";
-import { AddressAdapter } from "./addressAdapter.ts";
+import { AddressAdapter } from "@persistence/adapters/addressAdapter.ts";
 import { DbAdapter } from "@persistence/DbAdapter.ts";
 
 export class RentalPropertyAdapter implements DbAdapter<RentalPropertyEntity, RentalProperty> {

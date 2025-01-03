@@ -1,6 +1,6 @@
-import { DbAdapter } from "../DbAdapter.ts";
+import { DbAdapter } from "@persistence/DbAdapter.ts";
 import { Address } from "@model/address.ts"
-import { AddressEntity } from "../dbEntities/addressEntity.ts";
+import { AddressEntity } from "@persistence/dbEntities/addressEntity.ts";
 import { UUID } from "node:crypto";
 
 

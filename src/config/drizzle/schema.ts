@@ -1,4 +1,4 @@
-import { pgTable, varchar, uuid, timestamp,   } from "drizzle-orm/pg-core";
+import { pgTable, varchar, uuid, timestamp, integer,   } from "drizzle-orm/pg-core";
 import { relations } from "drizzle-orm/relations";
 
 
@@ -12,8 +12,8 @@ export const rentalProperties = pgTable("rental_properties", {
     editedAt: timestamp({precision: 0, withTimezone: true}).defaultNow().notNull(),
     editedBy: varchar().notNull(),
     rentalName: varchar().notNull(),
-    singleBeds: varchar().notNull(),
-    doubleBeds: varchar().notNull(),
+    singleBeds: integer().notNull(),
+    doubleBeds: integer().notNull(),
     storage: varchar().notNull(),
 });
 export const rentalPropertiesRelations = relations(rentalProperties, ({ one }) => ({

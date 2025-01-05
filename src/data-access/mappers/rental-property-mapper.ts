@@ -23,8 +23,8 @@ export const rentalPropertyMapper = {
       new Date(row.editedAt!),
       row.editedBy,
       row.rentalName,
-      parseInt(row.singleBeds),
-      parseInt(row.doubleBeds),
+      row.singleBeds,
+      row.doubleBeds,
       row.storage
     );
   },
@@ -39,8 +39,8 @@ export const rentalPropertyMapper = {
       editedAt: property.editedAt,
       editedBy: property.editedBy,
       rentalName: property.rentalName,
-      singleBeds: property.singleBeds.toString(),
-      doubleBeds: property.doubleBeds.toString(),
+      singleBeds: property.singleBeds,
+      doubleBeds: property.doubleBeds,
       storage: property.storage,
     };
   },

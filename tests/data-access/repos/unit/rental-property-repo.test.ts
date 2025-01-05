@@ -3,6 +3,7 @@ import { stub, spy, assertSpyCalls } from "@std/testing/mock";
 import { rentalPropertyRepository } from "@repository/rental-property-repo.ts";
 import { rentalPropertyMapper } from "@mapper/rental-property-mapper.ts";
 import db from "@config/drizzle/db.ts"; 
+import { randomUUID } from "node:crypto";
 
 
 
@@ -16,8 +17,8 @@ const mockData = [
     editedAt: "2023-01-02",
     editedBy: "user2",
     rentalName: "Rental 1",
-    singleBeds: "2",
-    doubleBeds: "2",
+    singleBeds: 2,
+    doubleBeds: 2,
     storage: "no",
     addressId: "123e4567-e89b-12d3-a456-426614174001",
     address: {
@@ -37,8 +38,8 @@ const mockData = [
     editedAt: "2023-02-02",
     editedBy: "user4",
     rentalName: "Rental 2",
-    singleBeds: "1",
-    doubleBeds: "3",
+    singleBeds: 1,
+    doubleBeds: 3,
     storage: "yes",
     addressId: "123e4567-e89b-12d3-a456-426614174003",
     address: {
@@ -103,7 +104,7 @@ Deno.test("getRentalPropertyById returns mapped domain object", async () => {
   
     try {
       await assertRejects(
-        () => rentalPropertyRepository.getRentalPropertyById("non-existing-id"),
+        () => rentalPropertyRepository.getRentalPropertyById(randomUUID()),
         Error,
         "Rental property not found"
       );

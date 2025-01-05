@@ -35,8 +35,8 @@ describe("Rental Property Mapper", () => {
         editedAt: new Date(),
         editedBy: "editedBy",
         rentalName: "rentalName",
-        singleBeds: "1",
-        doubleBeds: "2",
+        singleBeds: 1,
+        doubleBeds: 2,
         storage: "storage",
         address: sampleAddressDbModel,
     };
@@ -50,8 +50,8 @@ describe("Rental Property Mapper", () => {
         editedAt: new Date(),
         editedBy: "editedBy",
         rentalName: "rentalName",
-        singleBeds: "1",
-        doubleBeds: "2",
+        singleBeds: 1,
+        doubleBeds: 2,
         storage: "storage",
     }
 
@@ -64,8 +64,8 @@ describe("Rental Property Mapper", () => {
         new Date(sampleRentalPropertyDbModel.editedAt),
         sampleRentalPropertyDbModel.editedBy,
         sampleRentalPropertyDbModel.rentalName,
-        parseInt(sampleRentalPropertyDbModel.singleBeds),
-        parseInt(sampleRentalPropertyDbModel.doubleBeds),
+        sampleRentalPropertyDbModel.singleBeds,
+        sampleRentalPropertyDbModel.doubleBeds,
         sampleRentalPropertyDbModel.storage
     );
 
@@ -81,8 +81,8 @@ describe("Rental Property Mapper", () => {
         assertEquals(rentalProperty.editedAt, sampleRentalPropertyDbModel.editedAt);
         assertEquals(rentalProperty.editedBy, sampleRentalPropertyDbModel.editedBy);
         assertEquals(rentalProperty.rentalName, sampleRentalPropertyDbModel.rentalName);
-        assertEquals(rentalProperty.singleBeds, parseInt(sampleRentalPropertyDbModel.singleBeds));
-        assertEquals(rentalProperty.doubleBeds, parseInt(sampleRentalPropertyDbModel.doubleBeds));
+        assertEquals(rentalProperty.singleBeds, sampleRentalPropertyDbModel.singleBeds);
+        assertEquals(rentalProperty.doubleBeds, sampleRentalPropertyDbModel.doubleBeds);
         assertEquals(rentalProperty.storage, sampleRentalPropertyDbModel.storage);
 
         addressMapperStub.restore();
@@ -102,8 +102,8 @@ describe("Rental Property Mapper", () => {
         assertEquals(rentalProperty.editedAt, sampleRentalPropertyDbModel.editedAt);
         assertEquals(rentalProperty.editedBy, sampleRentalPropertyDbModel.editedBy);
         assertEquals(rentalProperty.rentalName, sampleRentalPropertyDbModel.rentalName);
-        assertEquals(rentalProperty.singleBeds, parseInt(sampleRentalPropertyDbModel.singleBeds));
-        assertEquals(rentalProperty.doubleBeds, parseInt(sampleRentalPropertyDbModel.doubleBeds));
+        assertEquals(rentalProperty.singleBeds, sampleRentalPropertyDbModel.singleBeds);
+        assertEquals(rentalProperty.doubleBeds, sampleRentalPropertyDbModel.doubleBeds);
         assertEquals(rentalProperty.storage, sampleRentalPropertyDbModel.storage);
 
         addressMapperStub.restore();
@@ -119,8 +119,8 @@ describe("Rental Property Mapper", () => {
         assertEquals(rentalPropertyDbModel.editedAt, sampleRentalProperty.editedAt);
         assertEquals(rentalPropertyDbModel.editedBy, sampleRentalProperty.editedBy);
         assertEquals(rentalPropertyDbModel.rentalName, sampleRentalProperty.rentalName);
-        assertEquals(rentalPropertyDbModel.singleBeds, sampleRentalProperty.singleBeds.toString());
-        assertEquals(rentalPropertyDbModel.doubleBeds, sampleRentalProperty.doubleBeds.toString());
+        assertEquals(rentalPropertyDbModel.singleBeds, sampleRentalProperty.singleBeds);
+        assertEquals(rentalPropertyDbModel.doubleBeds, sampleRentalProperty.doubleBeds);
         assertEquals(rentalPropertyDbModel.storage, sampleRentalProperty.storage);
     });
 

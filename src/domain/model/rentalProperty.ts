@@ -19,7 +19,7 @@ export class RentalProperty {
     readonly storage: string;
 
     private constructor(
-        id: UUID,
+        id: UUID | undefined,
         address: Address | undefined,
         rentalOwner: string,
         madeAt: Date,
@@ -45,7 +45,7 @@ export class RentalProperty {
     }
 
     static from = (
-        id: UUID,
+        id: UUID | undefined,
         address: Address | undefined,
         rentalOwner: string,
         madeAt: Date,

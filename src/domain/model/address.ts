@@ -4,7 +4,6 @@ import { z } from 'zod';
 
 
 const AddressSchema = z.object({
-    id: z.string().uuid(),
     country: z.string().max(32),
     city: z.string().max(32),
     postalCode: z.string().max(16),
@@ -20,7 +19,7 @@ export class Address {
     readonly street: string;
     readonly streetNumber: string;
 
-    private constructor(id: UUID, country: string, city: string, postalCode: string, street: string, streetNumber: string) {
+    private constructor(id: UUID | undefined, country: string, city: string, postalCode: string, street: string, streetNumber: string) {
         this.id = id;
         this.country = country;
         this.city = city;
@@ -29,7 +28,7 @@ export class Address {
         this.streetNumber = streetNumber;
     }
 
-    static from = (id: UUID, country: string, city: string, postalCode: string, street: string, streetNumber: string): Address => {
+    static from = (id: UUID | undefined, country: string, city: string, postalCode: string, street: string, streetNumber: string): Address => {
         AddressSchema.parse({
             id: id,
             country: country,

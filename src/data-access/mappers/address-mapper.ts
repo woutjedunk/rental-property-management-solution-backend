@@ -3,7 +3,7 @@ import { addresses } from "@config/drizzle/schema.ts";
 import { UUID } from "node:crypto";
 
 
-type AddressDbModel = typeof addresses.$inferSelect;
+type AddressDbModel = typeof addresses.$inferInsert;
 
 export const addressMapper = {
     toDomain: (row: AddressDbModel): Address => {

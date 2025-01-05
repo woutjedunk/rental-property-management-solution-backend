@@ -4,8 +4,8 @@ import { addressMapper } from "./address-mapper.ts";
 import { rentalProperties, addresses} from "@config/drizzle/schema.ts";
 import { UUID } from "node:crypto";
 
-type RentalPropertyDbModel = typeof rentalProperties.$inferSelect;
-type AddressDbModel = typeof addresses.$inferSelect;
+type RentalPropertyDbModel = typeof rentalProperties.$inferInsert;
+type AddressDbModel = typeof addresses.$inferInsert;
 
 
 export const rentalPropertyMapper = {
@@ -18,9 +18,9 @@ export const rentalPropertyMapper = {
       row.id as UUID,
       address,
       row.rentalOwner,
-      new Date(row.madeAt),
+      new Date(row.madeAt!),
       row.madeBy,
-      new Date(row.editedAt),
+      new Date(row.editedAt!),
       row.editedBy,
       row.rentalName,
       parseInt(row.singleBeds),

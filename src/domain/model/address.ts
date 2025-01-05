@@ -13,7 +13,7 @@ const AddressSchema = z.object({
 });
 
 export class Address {
-    readonly id: UUID;
+    readonly id?: UUID;
     readonly country: string;
     readonly city: string;
     readonly postalCode: string;

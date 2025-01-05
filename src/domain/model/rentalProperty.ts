@@ -5,7 +5,7 @@ import { z } from  "npm:zod";
 
 
 export class RentalProperty {
-    readonly id: UUID;
+    readonly id?: UUID;
     readonly address?: Address;
     readonly rentalOwner: string; // later user aan vasthangen
 

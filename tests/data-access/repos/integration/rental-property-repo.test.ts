@@ -5,6 +5,8 @@ import { rentalPropertyMapper } from "@mapper/rental-property-mapper.ts";
 import db from "@config/drizzle/db.ts"; 
 
 
+
+
 const mockData = [
   {
     id: "123e4567-e89b-12d3-a456-426614174000",

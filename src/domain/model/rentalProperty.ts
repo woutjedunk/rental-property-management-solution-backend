@@ -9,10 +9,10 @@ export class RentalProperty {
     readonly address?: Address;
     readonly rentalOwner: string; // later user aan vasthangen
 
-    readonly madeAt: Date;
-    readonly madeBy: string; // later user aan vasthangen
-    readonly editedAt: Date;
-    readonly editedBy: string;  // later user aan vasthangen
+    readonly madeAt?: Date;
+    readonly madeBy?: string; // later user aan vasthangen
+    readonly editedAt?: Date;
+    readonly editedBy?: string;  // later user aan vasthangen
     readonly rentalName: string;
     readonly singleBeds: number;
     readonly doubleBeds: number;
@@ -22,10 +22,10 @@ export class RentalProperty {
         id: UUID | undefined,
         address: Address | undefined,
         rentalOwner: string,
-        madeAt: Date,
-        madeBy: string,
-        editedAt: Date,
-        editedBy: string,
+        madeAt: Date | undefined,
+        madeBy: string | undefined,
+        editedAt: Date | undefined, 
+        editedBy: string | undefined,
         rentalName: string,
         singleBeds: number,
         doubleBeds: number,
@@ -48,24 +48,20 @@ export class RentalProperty {
         id: UUID | undefined,
         address: Address | undefined,
         rentalOwner: string,
-        madeAt: Date,
-        madeBy: string,
-        editedAt: Date,
-        editedBy: string,
+        madeAt: Date | undefined,
+        madeBy: string | undefined,
+        editedAt: Date | undefined,
+        editedBy: string |undefined,
         rentalName: string,
         singleBeds: number,
         doubleBeds: number,
         storage: string
     ): RentalProperty => {
 
-
         z.string().parse(rentalOwner);
 
         z.string().parse(madeBy);
-        z.date().parse(madeAt);
-        z.string().parse(editedBy);
-        z.date().parse(editedAt);
-        z.string().parse(rentalName);
+
         z.number().int().parse(singleBeds);
         z.number().int().parse(doubleBeds);
         z.string().parse(storage);

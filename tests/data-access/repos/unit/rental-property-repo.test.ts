@@ -64,7 +64,7 @@ Deno.test("getAllRentalProperties returns mapped domain objects", async () => {
     );
   
     try {
-      const result = await rentalPropertyRepository.getAllRentalProperties();
+      const result = await rentalPropertyRepository.getAll();
   
       // Assert the result length
       assertEquals(result.length, 2);
@@ -85,7 +85,7 @@ Deno.test("getRentalPropertyById returns mapped domain object", async () => {
     );
   
     try {
-      const result = await rentalPropertyRepository.getRentalPropertyById(someId);
+      const result = await rentalPropertyRepository.getById(someId);
   
       // Assert the result data
       assertEquals(result.id, "123e4567-e89b-12d3-a456-426614174000");
@@ -104,7 +104,7 @@ Deno.test("getRentalPropertyById returns mapped domain object", async () => {
   
     try {
       await assertRejects(
-        () => rentalPropertyRepository.getRentalPropertyById(randomUUID()),
+        () => rentalPropertyRepository.getById(randomUUID()),
         Error,
         "Rental property not found"
       );

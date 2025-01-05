@@ -10,7 +10,7 @@ import { UUID } from "node:crypto";
 
 export const rentalPropertyRepository: RentalPropertyRepository = {
 
-    saveRentalProperty: async (rentalPropertie: RentalProperty) => {
+    save: async (rentalPropertie: RentalProperty) => {
         const rentalPropertyDb = rentalPropertyMapper.toPersistence(rentalPropertie)
         const addressDb = addressMapper.toPersistence(rentalPropertie.address!)
 
@@ -27,7 +27,7 @@ export const rentalPropertyRepository: RentalPropertyRepository = {
             })
     },
 
-    getAllRentalProperties: async () => {
+    getAll: async () => {
         const data = await db.query.rentalProperties.findMany({
             with: {
                 address: true
@@ -37,7 +37,7 @@ export const rentalPropertyRepository: RentalPropertyRepository = {
         return data.map(rentalPropertyMapper.toDomain)
     },
 
-    getRentalPropertyById: async (id: UUID) => {
+    getById: async (id: UUID) => {
         
 
         const data = await db.query.rentalProperties.findFirst({

@@ -37,15 +37,15 @@ const dummyData: RentalProperty[] = [
 
 Deno.test("insert new RentalProperties", async () => {
     for (const rentalProperty of dummyData) {
-        await rentalPropertyRepository.saveRentalProperty(rentalProperty);
+        await rentalPropertyRepository.save(rentalProperty);
     }
 
-    const allRentalProperties = await rentalPropertyRepository.getAllRentalProperties();
+    const allRentalProperties = await rentalPropertyRepository.getAll();
     assertEquals(allRentalProperties.length, dummyData.length);
 });
 
 Deno.test("get all RentalProperties", async () => {
-    const allRentalProperties = await rentalPropertyRepository.getAllRentalProperties();
+    const allRentalProperties = await rentalPropertyRepository.getAll();
     assertEquals(allRentalProperties.length, dummyData.length);
     for (let i = 0; i < dummyData.length; i++) {
         assertEquals(allRentalProperties[i].rentalName, dummyData[i].rentalName);
@@ -53,16 +53,16 @@ Deno.test("get all RentalProperties", async () => {
 });
 
 Deno.test("get RentalProperty by ID", async () => {
-    const allRentalProperties = await rentalPropertyRepository.getAllRentalProperties();
+    const allRentalProperties = await rentalPropertyRepository.getAll();
     const rentalProperty = allRentalProperties[0];
-    const fetchedRentalProperty = await rentalPropertyRepository.getRentalPropertyById(rentalProperty.id!);
+    const fetchedRentalProperty = await rentalPropertyRepository.getById(rentalProperty.id!);
     assertEquals(fetchedRentalProperty.rentalName, rentalProperty.rentalName);
 });
 
 Deno.test("get RentalProperty by non-existent ID", async () => {
     await assertRejects(
         async () => {
-            await rentalPropertyRepository.getRentalPropertyById(randomUUID());
+            await rentalPropertyRepository.getById(randomUUID());
         },
         Error,
         "Rental property not found"

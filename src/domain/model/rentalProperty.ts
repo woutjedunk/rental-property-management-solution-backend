@@ -60,8 +60,6 @@ export class RentalProperty {
 
         z.string().parse(rentalOwner);
 
-        z.string().parse(madeBy);
-
         z.number().int().parse(singleBeds);
         z.number().int().parse(doubleBeds);
         z.string().parse(storage);

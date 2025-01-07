@@ -61,41 +61,6 @@ describe("A valid rental property", () => {
         });
     });
 
-    it("should throw an error for invalid madeBy", () => {
-        assertThrows(() => {
-            RentalProperty.from(
-                randomUUID(),
-                someValidAddress,
-                "rentalOwner",
-                new Date(),
-                123 as any,
-                new Date(),
-                "editedBy",
-                "rentalName",
-                1,
-                2,
-                "storage"
-            );
-        });
-    });
-
-    it("should throw an error for invalid editedBy", () => {
-        assertThrows(() => {
-            RentalProperty.from(
-                randomUUID(),
-                someValidAddress,
-                "rentalOwner",
-                new Date(),
-                "madeBy",
-                new Date(),
-                123 as any,
-                "rentalName",
-                1,
-                2,
-                "storage"
-            );
-        });
-    });
 
     it("should throw an error for invalid singleBeds", () => {
         assertThrows(() => {

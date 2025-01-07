@@ -4,6 +4,7 @@ import { rentalPropertyRepository } from "@repository/rental-property-repo.ts";
 import { rentalPropertyMapper } from "@mapper/rental-property-mapper.ts";
 import db from "@config/drizzle/db.ts"; 
 import { randomUUID } from "node:crypto";
+import { HttpException } from "../../../../src/exceptions/http-exception.ts";
 
 
 
@@ -105,7 +106,7 @@ Deno.test("getRentalPropertyById returns mapped domain object", async () => {
     try {
       await assertRejects(
         () => rentalPropertyRepository.getById(randomUUID()),
-        Error,
+        HttpException,
         "Rental property not found"
       );
     } finally {

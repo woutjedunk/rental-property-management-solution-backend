@@ -21,6 +21,8 @@
     "drizzle-orm": "npm:drizzle-orm@^0.38.3",
     "express": "npm:express@^4.21.2",
     "pg": "npm:pg@^8.13.1",
+    "reflect-metadata": "npm:reflect-metadata@^0.2.2",
+    "tsyringe": "npm:tsyringe@^4.8.0",
     "zod": "npm:zod@^3.24.1",
     "@model/": "./src/domain/model/",
     "@config/": "./src/config/",

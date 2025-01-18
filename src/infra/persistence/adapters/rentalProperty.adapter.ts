@@ -14,7 +14,7 @@ export class RentalPropertyAdapter implements DbAdapter<RentalProperty, RentalPr
             entity.zipcode,
             entity.street,
             entity.houseNumber,
-            entity.busNumber
+            entity.busNumber || undefined
         ),
         entity.rentalOwner,
         entity.createdAt,
@@ -31,12 +31,12 @@ export class RentalPropertyAdapter implements DbAdapter<RentalProperty, RentalPr
     toEntity(domain: RentalProperty): RentalPropertyPrisma {
         return {
             id: domain.id,
-            country: domain.address!.country,
-            city: domain.address!.city,
-            zipcode: domain.address!.zipcode,
-            street: domain.address!.street,
-            houseNumber: domain.address!.houseNumber,
-            busNumber: domain.address!.busNumber,
+            country: domain.address.country,
+            city: domain.address.city,
+            zipcode: domain.address.zipcode,
+            street: domain.address.street,
+            houseNumber: domain.address.houseNumber,
+            busNumber: domain.address.busNumber || null,
             rentalOwner: domain.rentalOwner,
             createdAt: domain.createdAt,
             createdBy: domain.createdBy,

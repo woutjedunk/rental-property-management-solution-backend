@@ -3,7 +3,7 @@ import { UUID } from "node:crypto";
 
 export class RentalProperty {
     readonly id: UUID;
-    address?: Address;
+    address: Address;
     rentalOwner: string; // later user aan vasthangen
 
     createdAt: Date;
@@ -17,7 +17,7 @@ export class RentalProperty {
 
     private constructor(
         id: UUID,
-        address: Address | undefined,
+        address: Address,
         rentalOwner: string,
         createdAt: Date,
         createdBy: string,
@@ -43,7 +43,7 @@ export class RentalProperty {
 
     static from = (
         id: UUID,
-        address: Address | undefined,
+        address: Address,
         rentalOwner: string,
         createdAt: Date,
         createdBy: string,

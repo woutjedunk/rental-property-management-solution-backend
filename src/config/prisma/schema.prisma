@@ -25,7 +25,7 @@ model RentalProperty {
     zipcode         String
     street          String
     houseNumber     String
-    busNumber       String
+    busNumber       String?
 }
 
 

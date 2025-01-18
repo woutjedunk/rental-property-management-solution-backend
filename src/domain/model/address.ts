@@ -3,48 +3,31 @@ import { z } from 'zod';
 
 
 
-const AddressSchema = z.object({
-    id: z.string().uuid(),
-    country: z.string().max(32),
-    city: z.string().max(32),
-    postalCode: z.string().max(16),
-    street: z.string().max(64),
-    streetNumber: z.string().max(16),
-});
-
 export class Address {
-    readonly id: UUID;
     readonly country: string;
     readonly city: string;
-    readonly postalCode: string;
+    readonly zipcode: string;
     readonly street: string;
-    readonly streetNumber: string;
+    readonly houseNumber: string;
+    readonly busNumber?: string
 
-    private constructor(id: UUID, country: string, city: string, postalCode: string, street: string, streetNumber: string) {
-        this.id = id;
+    private constructor(country: string, city: string, zipcode: string, street: string, houseNumber: string, busNumber?: string) {
         this.country = country;
         this.city = city;
-        this.postalCode = postalCode;
+        this.zipcode = zipcode;
         this.street = street;
-        this.streetNumber = streetNumber;
+        this.houseNumber = houseNumber;
+        this.busNumber = busNumber;
     }
 
-    static from = (id: UUID, country: string, city: string, postalCode: string, street: string, streetNumber: string): Address => {
-        AddressSchema.parse({
-            id: id,
-            country: country,
-            city: city,
-            postalCode: postalCode,
-            street: street,
-            streetNumber: streetNumber,
-        });
+    static from = (country: string, city: string, zipcode: string, street: string, houseNumber: string, busNumber?: string): Address => {
         return new Address(
-            id, 
             country,
             city, 
-            postalCode, 
+            zipcode, 
             street, 
-            streetNumber
+            houseNumber,
+            busNumber
         )
     }
 }

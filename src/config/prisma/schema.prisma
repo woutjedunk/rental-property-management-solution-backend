@@ -1,9 +1,33 @@
- 
- generator client {
-    provider = "prisma-client-js"
- }
+generator client {
+  provider = "prisma-client-js"
+}
 
- datasource db {
-    provider = "postgresql"
-    url = env("DATABASE_URL")
- }
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model RentalProperty {
+    id              String   @id @db.Uuid
+    createdAt       DateTime @default(now())
+    createdBy       String
+    updatedAt       DateTime @updatedAt
+    updatedBy       String
+
+    rentalName      String
+    rentalOwner     String
+    singleBeds      Int
+    doubleBeds      Int
+    storage         String
+
+    country         String
+    city            String
+    zipcode         String
+    street          String
+    houseNumber     String
+    busNumber       String
+}
+
+
+
+

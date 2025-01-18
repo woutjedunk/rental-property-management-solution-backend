@@ -29,5 +29,8 @@
     "@persistence/": "./src/infra/persistence/",
     "@controller/": "./src/controller/"
   },
-  "nodeModulesDir": "auto"
+  "nodeModulesDir": "auto",
+  "prisma": {
+    "schema": "./src/config/prisma/schema.prisma"
+  }
 }

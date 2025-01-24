@@ -32,5 +32,8 @@
   "nodeModulesDir": "auto",
   "prisma": {
     "schema": "./src/config/prisma/schema.prisma"
+  },
+  "compilerOptions": {
+    "experimentalDecorators": true
   }
 }

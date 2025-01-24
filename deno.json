@@ -1,9 +1,9 @@
 {
   "tasks": {
     "dev": "deno task db:start && deno run -A --watch src/main.ts --env-file",
-    "migrate": "deno task db:start && deno run --allow-env --allow-read prisma migrate deploy",
+    "migrate": "deno task db:start && deno run --allow-env --allow-read prisma migrate dev --schema=./src/config/prisma/schema.prisma",
     "generate": "deno task db:start && deno run --allow-env --allow-read prisma generate --schema=./src/config/prisma/schema.prisma",
-    "studio": "deno task db:start && deno run --allow-env --allow-read prisma studio",
+    "studio": "deno task db:start && deno run --allow-env --allow-read prisma studio --schema=./src/config/prisma/schema.prisma",
     "check": "deno lint && deno task prisma check",
     "update": "deno run --allow-read=./ --allow-net --allow-write=./ https://deno.land/x/deno_outdated@0.2.5/cli.ts && deno install",
     "db": "docker compose -f ./.dev/database/docker-compose.yml",

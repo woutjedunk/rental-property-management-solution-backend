@@ -1,6 +1,6 @@
 import { IRentalPropertyPersistence } from "@application/rentalProperty/IRentalPropertyPersistence.ts";
 import { RentalProperty } from "@model/rentalProperty.ts";
-import { RentalPropertyReadService } from "@controller/rentalProperty/readService.ts";
+import { RentalPropertyReadService } from "../../API/rentalProperty/readService.ts";
 
 class RentalPropertyReadServiceImpl implements RentalPropertyReadService {
     private rentalPropertyPersistence: IRentalPropertyPersistence;

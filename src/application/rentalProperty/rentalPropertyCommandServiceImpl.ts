@@ -1,5 +1,5 @@
 import { RentalProperty } from "@model/rentalProperty.ts";
-import { RentalPropertyCommandService } from "@controller/rentalProperty/commandService.ts";
+import { RentalPropertyCommandService } from "../../API/rentalProperty/commandService.ts";
 import { IRentalPropertyPersistence } from "@application/rentalProperty/IRentalPropertyPersistence.ts";
 
 class RentalPropertyComandService implements RentalPropertyCommandService {

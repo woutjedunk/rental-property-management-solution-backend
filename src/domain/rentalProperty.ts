@@ -22,6 +22,24 @@ export class RentalProperty {
         this.storage = storage
     }
 
+    static from = ( 
+        id: UUID, 
+        rentalOwner: string, 
+        rentalName: string, 
+        singleBeds: number, 
+        doublebeds: number, 
+        storage: string, 
+        country: string, 
+        city: string, 
+        zipcode: string, 
+        street: string, 
+        houseNumber: string, 
+        busNumber?: string ): RentalProperty =>
+    {
+        const address = new Address( country, city, zipcode, street, houseNumber, busNumber);
+        return new RentalProperty( id, address, rentalOwner, rentalName, singleBeds, doublebeds, storage )
+    }
+
     public changeAddress = ( country: string, city: string, zipCode: string, street: string, houseNumber: string, busNumber?: string ): void => {
         this.address = new Address(country, city, zipCode, street, houseNumber, busNumber)
     }

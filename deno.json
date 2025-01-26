@@ -21,7 +21,8 @@
     "@config/": "./src/config/",
     "@application/": "./src/application/",
     "@persistence/": "./src/infra/persistence/",
-    "@controller/": "./src/controller/"
+    "@controller/": "./src/controller/",
+    "@domain/": "./src/domain/"
   },
   "nodeModulesDir": "auto"
 }
